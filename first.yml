@@ -1,0 +1,7 @@
+--- # My First YAML playbook
+ - hosts: slave
+   sudo: yes
+   tasks:
+   - name: Install httpd on server
+     yum: pkg=httpd state=installed update_cache=true
+

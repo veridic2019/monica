@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  vars_prompt:
+    - name: pkg_name
+      prompt: please enter the package name    
+  tasks:
+    - name: Install httpd on server
+      action: yum name='{{ pkg_name}}' state=installed
+

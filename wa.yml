@@ -1,0 +1,14 @@
+---
+- hosts: slave
+  user: ansible
+  sudo: yes
+  connection: ssh
+  tasks:
+    - name: Install Apache on CentOs
+      yum: pkg='{{pkgname}}' state=latest
+    - name: wait for the service to start listening on port 80
+      wait_for:
+         path: /tmp/dummy
+    - name: second name
+      raw: echo "V" > /tmp/LOG
+
